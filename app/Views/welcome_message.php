@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 	<head>
-		<title>Welcome to CodeIgniter</title>
+		<title>Welcome to COMP4711 Lab 5</title>
 
 		<link rel="shortcut icon" type="image/png" href="/favicon.ico"/>
 	</head>
@@ -81,7 +81,7 @@
 
 		<div class="wrap">
 
-			<h1>Welcome to CodeIgniter</h1>
+			<h1>Welcome to COMP4711 Lab 5</h1>
 
 			<p class="version">version <?= CodeIgniter\CodeIgniter::CI_VERSION ?></p>
 
@@ -105,7 +105,7 @@
 			</div>
 
 			<div class="guide">
-				<p>The page you are looking at has been modified by Team 5: Carlo & Toni</p>
+				<p>The page you are looking at has been modified by Team 5: Carlo, Toni, and Eva</p>
 
 				<p>
 				
