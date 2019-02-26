@@ -110,6 +110,13 @@
 				<p>
 
                 <li><a href="students">Students</a></li>
+                <form action="students" method="post">
+                    <p>First Name:</p>
+                    <input type="text" name="first" />
+                    <p>Last Name:</p>
+                    <input type="text" name="last" />
+                    <button type="submit">Create</button>
+                </form>
                 <ol>
                     <?php
                     $db = \Config\Database::connect();
