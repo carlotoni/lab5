@@ -10,9 +10,7 @@ class StudentModel extends Model
   protected $table = 'student';
   protected $primaryKey = 'id';
   protected $allowedFields = ['first', 'last'];
-// added validation to edit student info
   protected $validationRules =[
-
     'first' => 'required|alpha_numeric_space|min_length[2]',
     'last' =>   'required|alpha_numeric_space|min_length[2]'
   ];
