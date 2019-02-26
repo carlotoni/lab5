@@ -24,6 +24,9 @@ SET time_zone = "+00:00";
 
 -- --------------------------------------------------------
 
+-- DROP TABLE `courses`;
+-- DROP TABLE `student`;
+
 --
 -- Table structure for table `courses`
 --
