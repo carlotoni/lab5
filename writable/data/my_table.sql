@@ -32,9 +32,10 @@ DROP TABLE IF EXISTS `student`;
 --
 
 CREATE TABLE `courses` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `code` text NOT NULL,
-  `name` text NOT NULL
+  `name` text NOT NULL,
+  primary key (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -56,9 +57,10 @@ INSERT INTO `courses` (`id`, `code`, `name`) VALUES
 --
 
 CREATE TABLE `student` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `first` text NOT NULL,
-  `last` text NOT NULL
+  `last` text NOT NULL,
+  primary key (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -72,21 +74,6 @@ INSERT INTO `student` (`id`, `first`, `last`) VALUES
 (4, 'carlo', 'mendoza'),
 (5, 'eva', 'wong');
 
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `courses`
---
-ALTER TABLE `courses`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `student`
---
-ALTER TABLE `student`
-  ADD PRIMARY KEY (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

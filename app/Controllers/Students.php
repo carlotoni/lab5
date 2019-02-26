@@ -4,7 +4,7 @@ use App\Models\StudentModel;
 use CodeIgniter\Controller;
 use CodeIgniter\API\ResponseTrait;
 
-class Students extends controller
+class Students extends Controller
 {
     use ResponseTrait;
 
@@ -37,7 +37,17 @@ class Students extends controller
 
     public function create()
     {
-        return $this->failUnauthorized('Create not implemented');
+      $model = new StudentModel();
+      
+      $data = [
+        'first' => $this->request->getPost('first'),
+        'last' => $this->request->getPost('last')
+      ];
+
+      $create_id = $model->insert($data, true);
+      $resp = $model->find($create_id);
+
+        return $this->respondCreated($resp);
     }
 
     public function update($id)
