@@ -32,21 +32,21 @@ class Database extends \CodeIgniter\Database\Config
 	public $default = [
 		'DSN'      => '',
 		'hostname' => 'localhost',
-		'username' => '',
+		'username' => 'root',
 		'password' => '',
-		'database' => '',
+		'database' => 'my_table',
 		'DBDriver' => 'MySQLi',
 		'DBPrefix' => '',
-		'pConnect' => false,
-		'DBDebug'  => (ENVIRONMENT !== 'production'),
-		'cacheOn'  => false,
+		'pConnect' => TRUE,
+		'DBDebug'  => TRUE,
+		'cacheOn'  => FALSE,
 		'cacheDir' => '',
 		'charset'  => 'utf8',
 		'DBCollat' => 'utf8_general_ci',
 		'swapPre'  => '',
-		'encrypt'  => false,
-		'compress' => false,
-		'strictOn' => false,
+		'encrypt'  => FALSE,
+		'compress' => FALSE,
+		'strictOn' => FALSE,
 		'failover' => [],
 		'port'     => 3306,
 	];
@@ -76,7 +76,7 @@ class Database extends \CodeIgniter\Database\Config
 		'compress' => false,
 		'strictOn' => false,
 		'failover' => [],
-		'port'     => 3306,
+		'port'     => 4711,
 	];
 
 	//--------------------------------------------------------------------
