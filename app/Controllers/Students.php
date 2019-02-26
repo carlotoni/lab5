@@ -24,7 +24,32 @@ class Students extends controller
 
     public function edit($id)
     {
-        return $this->failUnauthorized('Edit not implemented');
+        $db = \Config\Database::connect();
+        $query = $db->query("SELECT * FROM student WHERE id=$id");
+        $results = $query->getResult();
+        $first = NULL;
+        $last = NULL;
+        foreach ($results as $row)
+        {
+            $first = $row->first;
+            $last = $row->last;
+        }
+
+        return <<<HTML
+    <html>
+    <body>
+        <h1>Student $id</h1>
+        <form>
+            First:
+            <input placeholder="$first">
+            Last:
+            <input placeholder="$last">
+            <button type="submit">Update</button>
+        </form>
+    </body>
+    </html>
+HTML;
+//        return $this->failUnauthorized('Edit not implemented');
     }
 
     public function show($id)
