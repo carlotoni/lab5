@@ -14,6 +14,21 @@ class Students extends Controller
 
         $std = $model->findAll();
 
+// validation starts here
+
+if (! $this->validate([]))
+                {
+                        echo view('welcome_message', [
+                                'validation' => $this->validation
+                        ]);
+                }
+                else
+                {
+                        echo view('edit_success');
+                }
+
+// validation ends here
+
         return $this->respond($std, 200);
     }
 
