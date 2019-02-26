@@ -39,11 +39,11 @@ class Students extends Controller
     <html>
     <body>
         <h1>Student $id</h1>
-        <form>
+        <form action="/students/{$id}" method="post">
             First:
-            <input placeholder="$first">
+            <input placeholder="$first" name="first">
             Last:
-            <input placeholder="$last">
+            <input placeholder="$last" name="last">
             <button type="submit">Update</button>
         </form>
     </body>
@@ -72,12 +72,22 @@ HTML;
       $create_id = $model->insert($data, true);
       $resp = $model->find($create_id);
 
-        return $this->respondCreated($resp);
+      return $this->respondCreated($resp);
     }
 
     public function update($id)
     {
-        return $this->failUnauthorized('Update not implemented');
+      $model = new StudentModel();
+      
+      $data = [
+        'first' => $this->request->getPost('first'),
+        'last' => $this->request->getPost('last')
+      ];
+
+      $model->update($id, $data);
+      $resp = $model->find($id);
+
+      return $this->respond($resp);
     }
 
     public function delete($id)
