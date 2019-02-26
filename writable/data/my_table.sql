@@ -24,8 +24,8 @@ SET time_zone = "+00:00";
 
 -- --------------------------------------------------------
 
-DROP TABLE `courses`
-DROP TABLE `student`
+DROP TABLE IF EXISTS `courses`;
+DROP TABLE IF EXISTS `student`;
 
 --
 -- Table structure for table `courses`
