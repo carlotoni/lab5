@@ -108,6 +108,31 @@
 				<p>The page you are looking at has been modified by Team 5: Carlo, Toni, and Eva</p>
 
 				<p>
+
+                    <?php
+                        $db = \Config\Database::connect();
+                        $query = $db->query('SELECT * FROM student');
+                        $results = $query->getResult();
+                        foreach ($results as $row)
+                        {
+                            echo $row->id;
+                            echo $row->first;
+                            echo $row->last;
+                        }
+
+                        echo 'Total Results: '.count($results);
+
+                    $query = $db->query('SELECT * FROM courses');
+                    $results = $query->getResult();
+                    foreach ($results as $row)
+                    {
+                        echo $row->id;
+                        echo $row->code;
+                        echo $row->name;
+                    }
+
+                    echo 'Total Results: '.count($results);
+                    ?>
 				
 				<ul>
 
