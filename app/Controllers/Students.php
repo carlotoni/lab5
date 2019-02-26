@@ -4,7 +4,7 @@ use App\Models\StudentModel;
 use CodeIgniter\Controller;
 use CodeIgniter\API\ResponseTrait;
 
-class Students extends Controller
+class Students extends controller
 {
     use ResponseTrait;
 
