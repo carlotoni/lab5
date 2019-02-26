@@ -79,6 +79,7 @@
 			}
 		</style>
 
+
 		<div class="wrap">
 
 			<h1>Welcome to COMP4711 Lab 5</h1>
@@ -113,7 +114,9 @@
 
                 <ol>
                     <?php
-                    $db = \Config\Database::connect();
+					$db = \Config\Database::connect();
+					// validation starts here
+					$validation =  \Config\Services::validation();
                     $query = $db->query('SELECT * FROM student');
                     $results = $query->getResult();
                     foreach ($results as $row)
