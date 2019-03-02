@@ -13,6 +13,7 @@ class Modules
 	 | giving a slight performance boost.
 	 */
 	public $enabled = true;
+	public $discoverInComposer = true;
 
 	/*
 	|--------------------------------------------------------------------------

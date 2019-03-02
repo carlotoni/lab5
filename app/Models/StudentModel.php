@@ -6,22 +6,29 @@ use CodeIgniter\Model;
 
 class StudentModel extends Model
 {
-    protected $data = [
-    '1' => ['id'=>'1', 'first'=>'toni', 'last'=>'he'],
-    '2' => ['id'=>'2', 'first'=>'carlo', 'last'=>'mendoza'],
-    '3' => ['id'=>'3', 'first'=>'remy', 'last'=>'truong'],
-    '4' => ['id'=>'4', 'first'=>'aaron', 'last'=>'vong'],
-    '5' => ['id'=>'5', 'first'=>'llama', 'last'=>'alpaca']
-    ];
 
-    public function find($id = null)
-    {
-        return $this->data[$id];
-    }
+  protected $table = 'student';
+  protected $primaryKey = 'id';
+  protected $allowedFields = ['first', 'last'];
+  protected $validationRules =[
+    'first' => 'required|alpha_numeric_space|min_length[2]',
+    'last' =>   'required|alpha_numeric_space|min_length[2]'
+  ];
 
-    public function findAll(int $limit = 0, int $offset = 0)
-    {
-        return $this->data;
-    }
+    // public function find($id = null)
+    // {
+    //     $db = \Config\Database::connect();
+    //     $query = $db->query("SELECT * FROM student WHERE id=$id");
+    //     $results = $query->getResult();
+    //     return $results;
+    // }
+
+    // public function findAll(int $limit = 0, int $offset = 0)
+    // {
+    //     $db = \Config\Database::connect();
+    //     $query = $db->query("SELECT * FROM student");
+    //     $results = $query->getResult();
+    //     return $results;
+    // }
 }
 

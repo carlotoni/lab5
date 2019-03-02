@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 	<head>
-		<title>Welcome to CodeIgniter</title>
+		<title>Welcome to COMP4711 Lab 5</title>
 
 		<link rel="shortcut icon" type="image/png" href="/favicon.ico"/>
 	</head>
@@ -79,9 +79,10 @@
 			}
 		</style>
 
+
 		<div class="wrap">
 
-			<h1>Welcome to CodeIgniter</h1>
+			<h1>Welcome to COMP4711 Lab 5</h1>
 
 			<p class="version">version <?= CodeIgniter\CodeIgniter::CI_VERSION ?></p>
 
@@ -105,65 +106,57 @@
 			</div>
 
 			<div class="guide">
-				<p>The page you are looking at has been modified by Team 5: Carlo & Toni</p>
+				<p>The page you are looking at has been modified by Team 5: Carlo, Toni, and Eva</p>
 
 				<p>
-				
-				<ul>
 
-				<li><a href="<?php echo site_url('courses')?>">Courses</a></li>
-                    <ol>
-                        <li><a href="<?php echo site_url('courses/1')?>">Class 1</a></li>
-                            <form action="<?php echo site_url('courses/1/edit')?>" method="get">
-                                <button type="submit">Edit</button>
-                            </form>
-                            <form action="<?php echo site_url('courses/update/1')?>" method="post">
-                                <button type="submit">Update</button>
-                            </form>
-                            <form action="<?php echo site_url('courses/delete/1')?>" method="post">
-                                <button type="submit">Delete</button>
-                            </form>
-                        <li><a href="<?php echo site_url('courses/2')?>">Class 2</a></li>
-                        <li><a href="<?php echo site_url('courses/3')?>">Class 3</a></li>
-                        <li><a href="<?php echo site_url('courses/4')?>">Class 4</a></li>
-                        <li><a href="<?php echo site_url('courses/5')?>">Class 5</a></li>
-                        <li><a href="<?php echo site_url('courses/6')?>">Class 6</a></li>
-                    </ol>
-                    <form action="<?php echo site_url('courses/new')?>" method="get">
-                        <button type="submit">New</button>
-                    </form>
-                    <form action="<?php echo site_url('courses/create')?>" method="post">
+                <li><a href="students">Students</a></li>
+
+                <ol>
+                    <?php
+					$db = \Config\Database::connect();
+					// validation starts here
+					$validation =  \Config\Services::validation();
+                    $query = $db->query('SELECT * FROM student');
+                    $results = $query->getResult();
+                    foreach ($results as $row)
+                    {
+                        echo '<li><a href="students/'.$row->id.'">Student '.$row->id.'</a></li>';
+                        echo $row->last, ', ', $row->first;
+                        echo '  <form action="students/'.$row->id.'/edit" method="get">
+                                    <button type="submit">Edit</button>
+                                </form>';
+                    }
+                    ?>
+
+                    <p style="font-weight: bold">Add New Student:</p>
+                    <form action="students" method="post">
+                        First Name:
+                        <input type="text" name="first" />
+                        <br>
+                        Last Name:
+                        <input type="text" name="last" />
+                        <br>
                         <button type="submit">Create</button>
                     </form>
+                </ol>
 
-                    <br/><br/>
-
-                    <li><a href="<?php echo site_url('students')?>">Students</a></li>
-                    <ol>
-                        <li><a href="<?php echo site_url('students/1')?>">Student 1</a></li>
-                        <form action="<?php echo site_url('students/1/edit')?>" method="get">
-                            <button type="submit">Edit</button>
-                        </form>
-                        <form action="<?php echo site_url('students/update/1')?>" method="post">
-                            <button type="submit">Update</button>
-                        </form>
-                        <form action="<?php echo site_url('students/delete/1')?>" method="post">
-                            <button type="submit">Delete</button>
-                        </form>
-                        <li><a href="<?php echo site_url('students/2')?>">Student 2</a></li>
-                        <li><a href="<?php echo site_url('students/3')?>">Student 3</a></li>
-                        <li><a href="<?php echo site_url('students/4')?>">Student 4</a></li>
-                        <li><a href="<?php echo site_url('students/5')?>">Student 5</a></li>
-                    </ol>
-                    <form action="<?php echo site_url('students/new')?>" method="get">
-                        <button type="submit">New</button>
-                    </form>
-                    <form action="<?php echo site_url('students/create')?>" method="post">
-                        <button type="submit">Create</button>
-                    </form>
-
-
-                </ul>
+                <li><a href="courses">Courses</a></li>
+                <ol>
+                    <?php
+                    $db = \Config\Database::connect();
+                    $query = $db->query('SELECT * FROM courses');
+                    $results = $query->getResult();
+                    foreach ($results as $row)
+                    {
+                        echo '<li><a href="courses/'.$row->id.'">Course '.$row->id.'</a></li>';
+                        echo $row->code, ' - ', $row->name;
+                        echo '  <form action="courses/'.$row->id.'/edit" method="get">
+                                    <button type="submit">Edit</button>
+                                </form>';
+                    }
+                    ?>
+                </ol>
 				
 				</p>
 

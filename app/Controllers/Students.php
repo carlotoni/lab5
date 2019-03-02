@@ -24,7 +24,31 @@ class Students extends Controller
 
     public function edit($id)
     {
-        return $this->failUnauthorized('Edit not implemented');
+        $db = \Config\Database::connect();
+        $query = $db->query("SELECT * FROM student WHERE id=$id");
+        $results = $query->getResult();
+        $first = NULL;
+        $last = NULL;
+        foreach ($results as $row)
+        {
+            $first = $row->first;
+            $last = $row->last;
+        }
+
+        return <<<HTML
+    <html>
+    <body>
+        <h1>Student $id</h1>
+        <form action="/students/{$id}" method="post">
+            First:
+            <input placeholder="$first" name="first">
+            Last:
+            <input placeholder="$last" name="last">
+            <button type="submit">Update</button>
+        </form>
+    </body>
+    </html>
+HTML;
     }
 
     public function show($id)
@@ -37,12 +61,32 @@ class Students extends Controller
 
     public function create()
     {
-        return $this->failUnauthorized('Create not implemented');
+      $model = new StudentModel();
+      
+      $data = [
+        'first' => $this->request->getPost('first'),
+        'last' => $this->request->getPost('last')
+      ];
+
+      $create_id = $model->insert($data, true);
+      $resp = $model->find($create_id);
+
+      return $this->respondCreated($resp);
     }
 
     public function update($id)
     {
-        return $this->failUnauthorized('Update not implemented');
+      $model = new StudentModel();
+      
+      $data = [
+        'first' => $this->request->getPost('first'),
+        'last' => $this->request->getPost('last')
+      ];
+
+      $model->update($id, $data);
+      $resp = $model->find($id);
+
+      return $this->respond($resp);
     }
 
     public function delete($id)
